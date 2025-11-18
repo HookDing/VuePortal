@@ -1,11 +1,11 @@
 <template>
   <div class="space-y-6">
     <header>
-      <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Insights</p>
+      <p class="text-xs uppercase tracking-[0.4em] text-muted">Insights</p>
       <h2 class="text-3xl font-semibold">多端行为分析</h2>
     </header>
 
-    <section class="grid gap-6 lg:grid-cols-2">
+    <section class="auto-grid">
       <article class="glass-panel space-y-4 p-6">
         <h3 class="text-xl font-semibold">活跃终端趋势</h3>
         <div class="space-y-3 text-sm text-slate-300">

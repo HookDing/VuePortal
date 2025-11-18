@@ -2,11 +2,11 @@
   <div class="space-y-6">
     <header class="flex flex-wrap items-end justify-between gap-4">
       <div>
-        <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Profile</p>
+        <p class="text-xs uppercase tracking-[0.4em] text-muted">Profile</p>
         <h2 class="text-3xl font-semibold">个人中心</h2>
-        <p class="text-sm text-slate-400">管理个人资料与账号安全信息</p>
+        <p class="text-sm text-muted">管理个人资料与账号安全信息</p>
       </div>
-      <div class="rounded-2xl border border-white/10 px-4 py-2 text-xs text-slate-400">
+      <div class="rounded-2xl border border-white/10 px-4 py-2 text-xs text-muted">
         加入时间：{{ joinedAt }}
       </div>
     </header>
@@ -15,7 +15,7 @@
       <article class="glass-panel space-y-6 rounded-3xl border border-white/10 p-6">
         <div>
           <h3 class="text-xl font-semibold">基本信息</h3>
-          <p class="text-sm text-slate-400">同步修改后立即生效</p>
+          <p class="text-sm text-muted">同步修改后立即生效</p>
         </div>
         <form class="space-y-4" @submit.prevent="handleProfileSave">
           <label class="block space-y-2 text-sm">
@@ -34,7 +34,7 @@
               :value="auth.user?.email"
               type="email"
               disabled
-              class="w-full cursor-not-allowed rounded-2xl border border-white/5 bg-white/5 px-4 py-2 text-slate-400"
+              class="w-full cursor-not-allowed rounded-2xl border border-white/5 bg-white/5 px-4 py-2 text-muted"
             />
           </label>
           <div class="flex flex-wrap items-center gap-3">
@@ -53,7 +53,7 @@
       <article class="glass-panel space-y-4 rounded-3xl border border-white/10 p-6">
         <div>
           <h3 class="text-xl font-semibold">安全信息</h3>
-          <p class="text-sm text-slate-400">定期更新密码，保障账户安全</p>
+          <p class="text-sm text-muted">定期更新密码，保障账户安全</p>
         </div>
         <form class="space-y-3 text-sm" @submit.prevent="handlePasswordSave">
           <input

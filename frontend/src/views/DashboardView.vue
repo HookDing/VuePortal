@@ -2,9 +2,9 @@
   <div class="space-y-6">
     <header class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Control</p>
+        <p class="text-xs uppercase tracking-[0.4em] text-muted">Control</p>
         <h2 class="text-3xl font-semibold">统一控制台</h2>
-        <p class="text-sm text-slate-400">多端实时指标、任务与通道状态一屏掌控</p>
+        <p class="text-sm text-muted">多端实时指标、任务与通道状态一屏掌控</p>
       </div>
       <div class="flex items-center gap-3">
         <span class="rounded-full border border-emerald-400/30 px-3 py-1 text-xs font-semibold text-emerald-200">JWT 已启用</span>
@@ -19,33 +19,33 @@
 
     <div class="grid gap-6 xl:grid-cols-[2fr_1fr]">
       <div class="space-y-6">
-        <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <section class="auto-grid--compact">
           <article
             v-for="item in highlightStats"
             :key="item.title"
             class="glass-panel space-y-2 rounded-2xl border border-white/10 p-4"
           >
             <div class="flex items-center justify-between">
-              <p class="text-xs uppercase tracking-[0.4em] text-slate-500">{{ item.title }}</p>
+              <p class="text-xs uppercase tracking-[0.4em] text-subtle">{{ item.title }}</p>
               <span :class="['text-xs font-semibold', item.trend === 'up' ? 'text-emerald-300' : 'text-rose-300']">{{ item.delta }}</span>
             </div>
             <p class="text-3xl font-semibold">{{ item.value }}</p>
-            <p class="text-xs text-slate-400">{{ item.description }}</p>
+            <p class="text-xs text-muted">{{ item.description }}</p>
           </article>
         </section>
 
-        <section class="grid gap-4 lg:grid-cols-2">
+        <section class="auto-grid">
           <article class="glass-panel rounded-3xl border border-white/10 p-6">
             <h3 class="text-xl font-semibold">工作区状态</h3>
-            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+            <ul class="mt-4 auto-grid--compact">
               <li
                 v-for="metric in workMetrics"
                 :key="metric.label"
                 class="rounded-2xl border border-white/5 px-3 py-3"
               >
-                <p class="text-xs uppercase tracking-[0.3em] text-slate-500">{{ metric.label }}</p>
+                <p class="text-xs uppercase tracking-[0.3em] text-subtle">{{ metric.label }}</p>
                 <p :class="['text-2xl font-semibold', metric.accent ?? 'text-slate-100']">{{ metric.value }}</p>
-                <p class="text-xs text-slate-400">{{ metric.description }}</p>
+                <p class="text-xs text-muted">{{ metric.description }}</p>
               </li>
             </ul>
           </article>
@@ -59,7 +59,7 @@
               >
                 <input type="checkbox" class="h-4 w-4 rounded border-transparent text-cyan-400 focus:ring-cyan-400" :checked="task.done" />
                 <div class="flex-1">
-                  <p :class="['font-medium', task.done ? 'line-through text-slate-500' : 'text-white']">{{ task.title }}</p>
+                  <p :class="['font-medium', task.done ? 'line-through text-subtle' : 'text-white']">{{ task.title }}</p>
                   <p v-if="!task.done" class="text-[11px] uppercase tracking-[0.3em] text-amber-200">待跟进</p>
                 </div>
               </label>
@@ -67,7 +67,7 @@
           </article>
         </section>
 
-        <section class="device-grid grid gap-4 md:grid-cols-2">
+        <section class="auto-grid">
           <article
             v-for="device in devices"
             :key="device.name"
@@ -76,21 +76,21 @@
             <div class="flex items-center justify-between">
               <div>
                 <h3 class="text-xl font-semibold">{{ device.name }}</h3>
-                <p class="text-xs uppercase tracking-[0.35em] text-slate-500">{{ device.breakpoint }}</p>
+                <p class="text-xs uppercase tracking-[0.35em] text-subtle">{{ device.breakpoint }}</p>
               </div>
-              <span class="text-xs text-slate-400">{{ device.range }}</span>
+              <span class="text-xs text-muted">{{ device.range }}</span>
             </div>
             <p class="text-sm text-slate-300">{{ device.desc }}</p>
-            <div class="flex flex-wrap gap-2 text-[11px] text-slate-400">
+            <div class="flex flex-wrap gap-2 text-[11px] text-muted">
               <span v-for="tag in device.tags" :key="tag" class="rounded-full border border-white/10 px-2 py-0.5">{{ tag }}</span>
             </div>
-            <div class="text-xs uppercase text-slate-400">
+            <div class="text-xs uppercase text-muted">
               像素 {{ device.px }}
             </div>
             <div class="mt-1 h-1.5 rounded-full bg-white/10">
               <span class="brand-gradient block h-full rounded-full" :style="{ width: device.coverage }" />
             </div>
-            <p class="text-xs text-slate-400">覆盖率 {{ device.coverage }}</p>
+            <p class="text-xs text-muted">覆盖率 {{ device.coverage }}</p>
           </article>
         </section>
       </div>
@@ -104,11 +104,11 @@
               :key="item.title"
               class="flex items-center gap-3 rounded-2xl border border-white/5 px-3 py-2"
             >
-              <span class="text-xs text-slate-500">{{ item.time }}</span>
+              <span class="text-xs text-subtle">{{ item.time }}</span>
               <div class="h-2 w-2 rounded-full" :class="statusColorMap[item.status]" />
               <div class="flex-1">
                 <p class="text-white">{{ item.title }}</p>
-                <p class="text-[11px] uppercase tracking-[0.4em] text-slate-500">{{ item.channel }}</p>
+                <p class="text-[11px] uppercase tracking-[0.4em] text-subtle">{{ item.channel }}</p>
               </div>
               <span
                 class="rounded-full px-2 py-0.5 text-[10px] font-semibold"
@@ -123,7 +123,7 @@
           <h3 class="text-xl font-semibold">通道可用性</h3>
           <table class="mt-4 w-full text-sm text-slate-200">
             <thead>
-              <tr class="text-left text-xs uppercase tracking-[0.3em] text-slate-500">
+              <tr class="text-left text-xs uppercase tracking-[0.3em] text-subtle">
                 <th class="py-1">通道</th>
                 <th class="py-1">可用性</th>
                 <th class="py-1">延迟</th>

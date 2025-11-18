@@ -9,10 +9,12 @@ import { openApiSpec } from './docs/openapi';
 
 const app = express();
 
+const allowAllOrigins = config.allowedOrigins.includes('*');
+
 app.use(
   cors({
-    origin: ['http://localhost:5173'],
-    credentials: true,
+    origin: allowAllOrigins ? true : config.allowedOrigins,
+    credentials: !allowAllOrigins,
   }),
 );
 app.use(express.json());

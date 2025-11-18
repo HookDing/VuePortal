@@ -1,0 +1,28 @@
+{
+  "artifactsDir": "release",
+  "packages": [
+    {
+      "name": "frontend",
+      "path": "frontend",
+      "buildScript": "npm run build",
+      "output": "dist",
+      "include": [
+        "package.json",
+        "package-lock.json",
+        "vite.config.ts"
+      ]
+    },
+    {
+      "name": "backend",
+      "path": "backend",
+      "buildScript": "npm run build",
+      "output": "dist",
+      "include": [
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        ".env.example"
+      ]
+    }
+  ]
+}

@@ -1,18 +1,18 @@
 <template>
   <div class="space-y-6">
     <header>
-      <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Control</p>
+      <p class="text-xs uppercase tracking-[0.4em] text-muted">Control</p>
       <h2 class="text-3xl font-semibold">设置中心</h2>
     </header>
 
     <section class="glass-panel space-y-4 p-6">
       <h3 class="text-xl font-semibold">多端适配</h3>
-      <div class="grid gap-4 md:grid-cols-2">
+      <div class="auto-grid">
         <label v-for="item in modes" :key="item.label" class="rounded-xl border border-white/10 bg-white/5 p-4">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-base font-semibold">{{ item.label }}</p>
-              <p class="text-xs uppercase tracking-widest text-slate-400">{{ item.breakpoint }}</p>
+              <p class="text-xs uppercase tracking-widest text-muted">{{ item.breakpoint }}</p>
             </div>
             <input type="checkbox" class="h-5 w-5 rounded border-transparent text-cyan-400 focus:ring-cyan-400" checked />
           </div>

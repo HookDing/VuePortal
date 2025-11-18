@@ -6,7 +6,7 @@
         :key="tab.path"
         class="group flex shrink-0 items-center rounded-2xl border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] transition"
         :class="[
-          tab.path === tabStore.activePath ? 'bg-white/10 text-white border-white/40' : 'border-white/15 text-slate-300 hover:border-white/40',
+          tab.path === tabStore.activePath ? tabTone.active : tabTone.inactive,
           tab.pinned ? 'pr-2' : 'pr-3',
         ]"
         draggable="true"
@@ -33,7 +33,7 @@
         </button>
       </div>
     </template>
-    <p v-else class="text-xs uppercase tracking-[0.4em] text-slate-500">尚未打开子页面</p>
+    <p v-else class="text-xs uppercase tracking-[0.4em] text-subtle">尚未打开子页面</p>
     <slot name="extra" />
     <Teleport to="body">
       <div
@@ -60,11 +60,26 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { onMounted, onBeforeUnmount, reactive, ref } from 'vue';
+import { onMounted, onBeforeUnmount, reactive, ref, computed } from 'vue';
 import { useTabStore, type TabItem } from '@/stores/tabs';
+import { useThemeStore } from '@/stores/theme';
 
 const tabStore = useTabStore();
 const { tabs } = storeToRefs(tabStore);
+const themeStore = useThemeStore();
+
+const tabTone = computed(
+  () =>
+    themeStore.theme === 'dark'
+      ? {
+          active: 'bg-white/10 text-white border-white/40',
+          inactive: 'border-white/15 text-slate-300 hover:border-white/40',
+        }
+      : {
+          active: 'bg-white text-slate-900 border-slate-200 shadow-[0_12px_30px_rgba(15,23,42,0.08)]',
+          inactive: 'border-slate-200 text-muted hover:border-slate-400/80 hover:text-slate-900',
+        },
+);
 
 const draggingPath = ref<string | null>(null);
 const contextMenu = reactive<{ visible: boolean; x: number; y: number; tab: TabItem | null }>({

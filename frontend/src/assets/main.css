@@ -12,6 +12,8 @@
   --glass-bg: rgba(255, 255, 255, 0.9);
   --glass-border: rgba(15, 23, 42, 0.1);
   --glass-shadow: 0 25px 80px rgba(15, 23, 42, 0.12);
+  --muted-text: #475569;
+  --subtle-text: #334155;
 }
 
 [data-theme='dark'] {
@@ -23,6 +25,14 @@
   --glass-bg: rgba(11, 17, 32, 0.85);
   --glass-border: rgba(148, 163, 184, 0.15);
   --glass-shadow: 0 25px 80px rgba(2, 6, 23, 0.6);
+  --muted-text: #cbd5f5;
+  --subtle-text: #94a3b8;
+}
+
+html,
+body,
+#app {
+  height: 100%;
 }
 
 body {
@@ -31,15 +41,17 @@ body {
   background: var(--body-bg);
   color: var(--body-text);
   transition: background 0.4s ease, color 0.4s ease;
+  overflow: hidden;
 }
 
 .app-shell {
+  --sidebar-width: clamp(220px, 18vw, 340px);
   width: 100%;
-  max-width: min(2100px, 90vw);
+  max-width: min(2400px, 94vw);
   margin: 0 auto;
   padding-inline: clamp(16px, 4vw, 72px);
-  gap: clamp(16px, 2vw, 48px);
-  grid-template-columns: minmax(260px, 18rem) 1fr;
+  gap: clamp(16px, 3vw, 56px);
+  grid-template-columns: 1fr;
   align-items: stretch;
 }
 
@@ -52,12 +64,52 @@ body {
 
 .device-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(0.75rem, 1.4vw, 1.75rem);
 }
 
 .brand-gradient {
   background: linear-gradient(120deg, #4fd1c5, #63b3ed, #c084fc);
+}
+
+.workspace-window {
+  width: 100%;
+  min-height: clamp(320px, 42vh, 720px);
+  border-radius: clamp(24px, 3vw, 42px);
+}
+
+.window-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: clamp(0.75rem, 1.2vw, 1.5rem);
+}
+
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(1rem, 1.5vw, 1.75rem);
+}
+
+.auto-grid--compact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: clamp(0.75rem, 1vw, 1.25rem);
+}
+
+.lab-grid {
+  display: grid;
+  gap: clamp(24px, 2vw, 40px);
+}
+
+.lab-grid--split {
+  align-items: start;
+}
+
+.page-shell {
+  width: 100%;
+  max-width: min(1500px, 100%);
+  margin: 0 auto;
+  padding-inline: clamp(12px, 3vw, 32px);
 }
 
 @media (max-width: 768px) {
@@ -66,15 +118,45 @@ body {
   }
 }
 
+@media (max-width: 1280px) {
+  .app-shell {
+    max-width: min(1200px, 96vw);
+    gap: clamp(20px, 4vw, 48px);
+    padding-inline: clamp(16px, 6vw, 64px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .lab-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-shell {
+    grid-template-columns: minmax(var(--sidebar-width), 22rem) minmax(0, 1fr);
+    padding-inline: clamp(32px, 4vw, 72px);
+  }
+  .page-shell {
+    padding-inline: clamp(16px, 3vw, 40px);
+  }
+}
+
 @media (min-width: 1600px) {
   .glass-panel {
     border-radius: 2.25rem;
   }
   .device-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
   }
   :root {
     font-size: 17px;
+  }
+  .lab-grid {
+    grid-template-columns: minmax(0, 2.4fr) minmax(320px, 1.2fr);
+  }
+  .window-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
 
@@ -85,4 +167,42 @@ body {
   .glass-panel {
     border-radius: 2.5rem;
   }
+  .lab-grid {
+    grid-template-columns: minmax(0, 2.8fr) minmax(360px, 1fr);
+  }
+  .page-shell {
+    max-width: min(1700px, 96%);
+  }
+}
+
+.text-muted {
+  color: var(--muted-text);
+}
+
+.text-subtle {
+  color: var(--subtle-text);
+}
+
+.scroll-region {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.5) transparent;
+}
+
+.scroll-region::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scroll-region::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-region::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(226, 232, 240, 0.5), rgba(148, 163, 184, 0.4));
+}
+
+.scroll-region::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.8), rgba(148, 163, 184, 0.6));
 }

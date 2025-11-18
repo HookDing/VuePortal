@@ -2,9 +2,9 @@
   <div class="space-y-6">
     <header class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Admin</p>
+        <p class="text-xs uppercase tracking-[0.4em] text-muted">Admin</p>
         <h2 class="text-3xl font-semibold">用户管理</h2>
-        <p class="text-sm text-slate-400">查看所有注册用户，并可直接重置密码</p>
+        <p class="text-sm text-muted">查看所有注册用户，并可直接重置密码</p>
       </div>
       <div class="flex flex-wrap items-center gap-2">
         <button
@@ -24,7 +24,7 @@
     </header>
 
     <section class="glass-panel rounded-3xl border border-white/10">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 px-6 py-4 text-sm text-slate-400">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 px-6 py-4 text-sm text-muted">
         <span>共 {{ users.length }} 位用户</span>
         <span>管理员可直接为任意账户设置新密码</span>
       </div>
@@ -32,7 +32,7 @@
       <div class="overflow-x-auto">
         <table class="w-full min-w-[640px] text-sm">
           <thead>
-            <tr class="text-left text-xs uppercase tracking-[0.3em] text-slate-400">
+            <tr class="text-left text-xs uppercase tracking-[0.3em] text-muted">
               <th class="px-6 py-3">姓名</th>
               <th class="px-6 py-3">邮箱</th>
               <th class="px-6 py-3">角色</th>
@@ -44,7 +44,7 @@
             <tr v-for="user in filteredUsers" :key="user.id" class="border-t border-white/5 text-slate-200">
               <td class="px-6 py-4">
                 <div class="font-semibold">{{ user.name }}</div>
-                <div class="text-xs text-slate-500">{{ user.id.slice(0, 8) }}</div>
+                <div class="text-xs text-subtle">{{ user.id.slice(0, 8) }}</div>
               </td>
               <td class="px-6 py-4">{{ user.email }}</td>
               <td class="px-6 py-4">
@@ -55,7 +55,7 @@
                   {{ user.role === 'admin' ? '管理员' : '成员' }}
                 </span>
               </td>
-              <td class="px-6 py-4 text-slate-400">
+              <td class="px-6 py-4 text-muted">
                 {{ formatDate(user.createdAt) }}
               </td>
               <td class="px-6 py-4 space-y-2">
@@ -98,11 +98,11 @@
         <div class="glass-panel w-full max-w-lg space-y-4 rounded-3xl border border-white/10 p-6">
           <header class="flex items-center justify-between">
             <div>
-              <p class="text-xs uppercase tracking-[0.4em] text-slate-400">Edit</p>
+              <p class="text-xs uppercase tracking-[0.4em] text-muted">Edit</p>
               <h3 class="text-2xl font-semibold text-white">{{ editingUser?.name }}</h3>
-              <p class="text-sm text-slate-400">{{ editingUser?.email }}</p>
+              <p class="text-sm text-muted">{{ editingUser?.email }}</p>
             </div>
-            <button class="text-slate-400" @click="closeEditor">×</button>
+            <button class="text-muted" @click="closeEditor">×</button>
           </header>
           <form class="space-y-4" @submit.prevent="handleAdminUpdate">
             <label class="block text-sm">

@@ -1,9 +1,9 @@
 <template>
   <div class="mx-auto max-w-2xl space-y-6">
     <header class="space-y-1 text-center">
-      <p class="text-sm uppercase tracking-[0.4em] text-slate-400">Create</p>
+      <p class="text-sm uppercase tracking-[0.4em] text-muted">Create</p>
       <h2 class="text-3xl font-semibold">注册新账户</h2>
-      <p class="text-slate-400">注册成功后自动完成登录，随后即可访问主工作区</p>
+      <p class="text-muted">注册成功后自动完成登录，随后即可访问主工作区</p>
     </header>
 
     <form class="glass-panel grid gap-4 p-6 md:grid-cols-2" @submit.prevent="handleSubmit">
@@ -63,7 +63,7 @@
       <p v-if="successMessage" class="md:col-span-2 text-center text-sm text-emerald-300">
         {{ successMessage }}
       </p>
-      <p class="md:col-span-2 text-center text-xs text-slate-400">
+      <p class="md:col-span-2 text-center text-xs text-muted">
         默认测试账号：{{ demoAccount.email }} / {{ demoAccount.password }}，注册时若已存在将自动为您登录
       </p>
       <RouterLink class="md:col-span-2 text-center text-sm text-cyan-300 hover:text-cyan-200" to="/login">

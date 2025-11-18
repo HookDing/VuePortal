@@ -1,9 +1,9 @@
 <template>
   <div class="mx-auto max-w-xl space-y-6">
     <header class="space-y-2 text-center">
-      <p class="text-sm uppercase tracking-[0.4em] text-slate-400">Access</p>
+      <p class="text-sm uppercase tracking-[0.4em] text-muted">Access</p>
       <h2 class="text-3xl font-semibold">登录工作区</h2>
-      <p class="text-slate-400">使用注册邮箱 + 密码即可登录，自动带入 JWT</p>
+      <p class="text-muted">使用注册邮箱 + 密码即可登录，自动带入 JWT</p>
     </header>
 
     <form class="glass-panel space-y-4 p-6" @submit.prevent="handleSubmit">
